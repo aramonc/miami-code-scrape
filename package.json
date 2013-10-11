@@ -1,0 +1,30 @@
+{
+  "name": "Municipal Code Scrapper",
+  "version": "0.0.1",
+  "description": "Scrape city ordinances from Municode",
+  "main": "scrape.js",
+  "contributors": [ 
+    {
+      "name": "Cristina Solana",
+      "email": "cs@nightshiftcreative.com"
+    } 
+  ],
+  "scripts": {
+    "test": "testUI"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/code-for-miami/municode-scraper.git"
+  },
+  "keywords": [
+    "data",
+    "scrape",
+    "phantomjs"
+  ],
+  "devDependencies": {
+    "phantom": "*"
+  },
+  "author": "Code For Miami",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+}
