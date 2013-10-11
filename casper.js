@@ -1,18 +1,18 @@
-var utils = require('utils');
-var fs = require('fs');
-var casper = require('casper').create({
-	verbose: true,
-	logLevel: 'error',
-	pageSettings: {
-	loadImages: false,
-	loadPlugins: false
-	},
-	clientScripts: []
-});
+var utils = require('utils'),
+	fs = require('fs'),
+	casper = require('casper').create({
+		verbose: true,
+		logLevel: 'error',
+		pageSettings: {
+		loadImages: false,
+		loadPlugins: false
+		},
+		clientScripts: []
+	});
 
-var i = 0;
-var links = [];
-var code_data = [];
+var i = 0,
+	links = [],
+	code_data = [];
 
 // Get Top Level Links
 function getCodeLinks () {
@@ -45,21 +45,20 @@ function getCodeData(link) {
 
 		//if is level2
 
-		if ( link.indexOf("level2") != -1 ) {
+		if ( link.indexOf('level2') != -1 ) {
 
-			// Page Heading
-			var heading = this.fetchText('h2');
-			// Content
-			var content = this.getHTML('.wrap');
+				// Page Heading
+			var heading = this.fetchText('h2').replace(/\s(?=\s|\\)/g,'').trim(),
+				// Content
+				content = this.getHTML('.wrap').replace(/\s(?=\s|\\)/g,'').trim(),
 
-			var data = {
-				title: heading,
-				url: link,
-				content: content
-			};
+				data = {
+					title: heading,
+					url: link,
+					content: content
+				};
 
 			code_data.push(data);
-
 		}
 
 	});
@@ -69,9 +68,9 @@ function getCodeData(link) {
 casper.start('http://library.municode.com/toc.aspx?clientId=10620&checks=false', function() {
 	links = this.evaluate(getCodeLinks);
 
-	// Slice off .. and convert relative urls
+	// convert relative urls
 	for (var i = 0; i < links.length; i++) {
-		links[i] = "http://library.municode.com/" + links[i];//.slice(2);
+		links[i] = "http://library.municode.com/" + links[i];
 	}
 
 });
