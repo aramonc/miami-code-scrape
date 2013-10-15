@@ -48,9 +48,9 @@ function getCodeData(link) {
 		if ( link.indexOf('level2') != -1 ) {
 
 				// Page Heading
-			var heading = this.fetchText('h2').replace(/\s(?=\s|\\)/g,'').trim(),
+			var heading = this.fetchText('h2').replace(/\s(?=\s)/g,'').trim(),
 				// Content
-				content = this.getHTML('.wrap').replace(/\s(?=\s|\\)/g,'').trim(),
+				content = this.fetchText('.wrap p').replace(/\s(?=\s)/g,'').trim(),
 
 				data = {
 					title: heading,
