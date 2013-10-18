@@ -31,10 +31,10 @@ function loopThroughCodeLinks() {
 		i++;
 		this.run(loopThroughCodeLinks);
 	} else {
-		utils.dump(code_data);
+		//utils.dump(code_data);
 		console.log('code_data: ' + code_data.length);
 		console.log('links: ' + links.length);
-		fs.write("miami-code.json", JSON.stringify(code_data), 'w');
+		fs.write("miami-code.txt", code_data, 'w');
 		this.exit();
 	}
 }
@@ -48,17 +48,18 @@ function getCodeData(link) {
 		if ( link.indexOf('level2') != -1 ) {
 
 				// Page Heading
-			var heading = this.fetchText('h2').replace(/\s(?=\s)/g,'').trim(),
+			var heading = this.fetchText('h2').replace(/\s(?=\s)/g,'').trim() + '\r',
 				// Content
-				content = this.fetchText('.wrap p').replace(/\s(?=\s)/g,'').trim(),
+				content = heading + this.fetchText('.wrap p').replace(/\s(?=\s)/g,'').replace(/\\"/,'&quot;').trim() + '\n\n';
 
-				data = {
-					title: heading,
-					url: link,
-					content: content
-				};
-
-			code_data.push(data);
+				// data = {
+				// 	title: heading,
+				// 	url: link,
+				// 	content: content
+				// };
+				
+			console.log(content);
+			code_data.push(content);
 		}
 
 	});
