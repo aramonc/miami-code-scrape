@@ -50,7 +50,7 @@ function getCodeData(link) {
 				// Page Heading
 			var heading = this.fetchText('h2').replace(/\s(?=\s)/g,'').trim() + '\r',
 				// Content
-				content = heading + this.fetchText('.wrap p').replace(/\s(?=\s)/g,'').replace(/\\"/,'&quot;').trim() + '\n\n';
+				content = heading+ '\n\n' + this.fetchText('.wrap p').replace(/\s(?=\s)/g,'').replace(/\\"/,'&quot;').trim() + '\n\n';
 
 				// data = {
 				// 	title: heading,
