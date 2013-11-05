@@ -7,7 +7,9 @@ $converter->text = file_get_contents('miami-code.txt');
 $code = $converter->parse();
 
 if($code) {
-    file_put_contents('structured.xml', print_r($converter->structured, true));
+    echo "here \n";
+    file_put_contents('structured.txt', print_r($converter->structured, true));
+    echo "done \n";
 }
 
 

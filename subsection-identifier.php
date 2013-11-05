@@ -57,9 +57,9 @@ class SubsectionIdentifier
 									'/[a-z]{1,2}\. /' => range('a', 'z'),
 									'/\([a-z]{1,2}\) /' => range('a', 'z'),
 									'/[A-Z]{1,2}\. /' => range('A', 'Z'),
-									'/\([A-Z]{1,2}\) /' => range('a', 'z'),
+									'/\([A-Z]{1,2}\) /' => range('A', 'Z'),
 									'/([xvi]{1,4})\. /' => array('i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii', 'xviii', 'xix', 'xx'),
-									'/\(([xvi]{1,4})\) /' => array('i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii', 'xviii', 'xix', 'xx')
+									'/\(([xvi]{1,4})\) /' => array('i', 'ii', 'iii', 'iv', 'v', 'vi', 'vii', 'viii', 'ix', 'x', 'xi', 'xii', 'xiii', 'xiv', 'xv', 'xvi', 'xvii', 'xviii', 'xix', 'xx'),									
 									);
 
 		/*
@@ -87,7 +87,7 @@ class SubsectionIdentifier
 			 * Set aside the first five characters in this section of text. That's the maximum number
 			 * of characters that a prefix can occupy.
 			 */
-			$section_fragment = substr($paragraph, 0, 5);
+			$section_fragment = substr($paragraph, 0, 15);
 			
 			/*
 			 * Iterate through our regex candidates until we find one that matches (if, indeed, one
